@@ -13,8 +13,6 @@ var main = {
            content : $("#content").val()
        };
 
-       debugger;
-
        $.ajax({
            type : 'POST',
            url : '/api/v1/posts',
