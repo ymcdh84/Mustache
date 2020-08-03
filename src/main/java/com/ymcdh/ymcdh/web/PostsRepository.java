@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PostsRepository extends JpaRepository<Posts, Long> {
@@ -14,4 +15,6 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
 
     @Query(value = "SELECT NVL(MAX(ID),0) FROM POSTS", nativeQuery = true)
     String getMaxId();
+
+    Optional<Posts> findById(Long id);
 }

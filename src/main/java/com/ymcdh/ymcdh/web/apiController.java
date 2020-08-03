@@ -23,7 +23,14 @@ public class apiController {
     public ResponseEntity<Posts> insert(@RequestBody Posts user)
     {
         postService.insert(user);
+
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @PostMapping("/posts/{id}")
+    public ResponseEntity<Posts> update(@RequestBody Posts user)
+    {
+        postService.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

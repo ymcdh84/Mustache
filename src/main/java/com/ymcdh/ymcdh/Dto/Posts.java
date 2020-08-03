@@ -15,6 +15,7 @@ public class Posts {
     private Long id;
     private String title;
     private String author;
+    private String content;
     private LocalDateTime modifiedDate;
 
 }

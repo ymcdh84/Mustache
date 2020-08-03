@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -26,5 +27,13 @@ public class PostService {
         user.setId(Long.parseLong(postsRepository.getMaxId()) + 1);
         user.setModifiedDate(LocalDateTime.MAX);
         postsRepository.save(user);
+    }
+
+    public void save(Posts user) {
+        postsRepository.save(user);
+    }
+
+    public Optional<Posts> findById(Long id) {
+        return postsRepository.findById(id);
     }
 }
