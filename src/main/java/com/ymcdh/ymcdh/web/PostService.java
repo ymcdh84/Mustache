@@ -25,11 +25,12 @@ public class PostService {
 
     public void insert(Posts user) {
         user.setId(Long.parseLong(postsRepository.getMaxId()) + 1);
-        user.setModifiedDate(LocalDateTime.MAX);
+        user.setModifiedDate(LocalDateTime.now());
         postsRepository.save(user);
     }
 
     public void save(Posts user) {
+        user.setModifiedDate(LocalDateTime.now());
         postsRepository.save(user);
     }
 

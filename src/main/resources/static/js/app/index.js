@@ -34,11 +34,10 @@ var main = {
    update : function(){
        var data = {
            title : $("#title").val(),
+           author : $("#author").val(),
            content : $("#content").val()
        };
-
        var id = $("#id").val();
-
        $.ajax({
            type : 'PUT',
            url : '/api/v1/posts/'+ id,

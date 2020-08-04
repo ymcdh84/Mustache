@@ -1,14 +1,12 @@
 package com.ymcdh.ymcdh.web;
 
 import com.ymcdh.ymcdh.Dto.Posts;
+import com.ymcdh.ymcdh.Dto.PostsListResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,10 +25,13 @@ public class apiController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PostMapping("/posts/{id}")
-    public ResponseEntity<Posts> update(@RequestBody Posts user)
+    @PutMapping("/posts/{id}")
+    public ResponseEntity<Posts> update(@PathVariable String id, @RequestBody Posts dto)
     {
-        postService.save(user);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        dto.setId(Long.parseLong(id));
+
+        postService.save(dto);
+
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 }
