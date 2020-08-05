@@ -23,15 +23,19 @@ public class PostService {
                 .collect(Collectors.toList());
     }
 
-    public void insert(Posts user) {
-        user.setId(Long.parseLong(postsRepository.getMaxId()) + 1);
-        user.setModifiedDate(LocalDateTime.now());
-        postsRepository.save(user);
+    public void insert(Posts post) {
+        post.setId(Long.parseLong(postsRepository.getMaxId()) + 1);
+        post.setModifiedDate(LocalDateTime.now());
+        postsRepository.save(post);
     }
 
-    public void save(Posts user) {
-        user.setModifiedDate(LocalDateTime.now());
-        postsRepository.save(user);
+    public void save(Posts post) {
+        post.setModifiedDate(LocalDateTime.now());
+        postsRepository.save(post);
+    }
+
+    public void delete(Posts post) {
+        postsRepository.delete(post);
     }
 
     public Optional<Posts> findById(Long id) {
